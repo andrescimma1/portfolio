@@ -1,4 +1,3 @@
-import Typical from "react-typical";
 import styles from "./Profile.module.css";
 
 const Profile = () => {
@@ -44,16 +43,7 @@ const Profile = () => {
                 {" "}
                 <h1>
                   {" "}
-                  <Typical
-                    loop={Infinity}
-                    steps={[
-                      "Frontend Developer 💻",
-                      2000,
-                      "Fullstack Developer 💻",
-                      2000,
-                    ]}
-                    wrapper="p"
-                  />
+                  
                 </h1>
                 <span className={styles.profileRoleTagline}>
                   Una descripcion sobre mi bla bla bla bla bla bla.
