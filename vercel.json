@@ -8,7 +8,7 @@
   ],
   "settings": {
     "npm": {
-      "flags": ["--legacy-peer-deps"]
+      "flags": ["--force"]
     }
   }
 }
