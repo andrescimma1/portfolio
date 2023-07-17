@@ -5,7 +5,7 @@
     justify-content: center;
     height: 10%;
     min-height: fit-content;
-    margin-top: 12rem;
+    margin-top: 15rem;
 }
 
 .profileParent{
@@ -53,15 +53,6 @@
 
 .colzIcon :hover{
     transform: scale(1.5);
-}
-
-.homeContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 50vh !important;
-    min-height: 670px;
-    background-image: url("/assets/images/bg.jpg");
 }
 
 @media screen and (max-width: 1110px){

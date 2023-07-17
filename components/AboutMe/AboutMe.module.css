@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  width: 600px;
+  height: 700px;
+  border-radius: 8px;
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.4); /* Ajusta los valores según tus preferencias */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 1000px;
+  background-color: #f8f8f8;
+}
+
+.attackButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 40px;
+}
+
+.attackButton:hover {
+  background-color: #990000;
+}
+
+.separatorLine{
+    flex-grow: 1;
+  height: 1px;
+  background-color: #ADD8E6;
+  margin: 0 10px;
+}
+
+.separatorContainer{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 60%;
+
+}

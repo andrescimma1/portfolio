@@ -14,7 +14,7 @@ const Navbar = () => {
   
         // Calcula la posición del scroll y cambia el color del Navbar según sea necesario
         if (scrollPosition > navbarHeight) {
-          setNavColor(`rgba(0, 0, 0, ${Math.min((scrollPosition - navbarHeight) / threshold, 1)})`); // Cambio gradual del color
+          setNavColor(`rgba(22, 0, 42, ${Math.min((scrollPosition - navbarHeight) / threshold, 1)})`); // Cambio gradual del color
         } else {
           setNavColor('transparent'); // Color transparente cuando el scroll está en la parte superior del Navbar
         }
