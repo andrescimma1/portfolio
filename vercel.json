@@ -1,26 +1,12 @@
 {
   "version": 2,
-  "settings": {
-    "npm": {
-      "flags": ["--force"]
-    }
+  "env": {
+    "NPM_FLAGS": "--force"
   },
   "builds": [
     { 
-      "src": "api/**/*.js",
-      "use": "@vercel/node",
-      "github": {
-        "enabled": true,
-        "autoAlias": true
-      }
-    },
-    { 
       "src": "public/**",
-      "use": "@vercel/static",
-      "github": {
-        "enabled": true,
-        "autoAlias": true
-      }
+      "use": "@vercel/static"
     },
     {
       "src": "package.json",
