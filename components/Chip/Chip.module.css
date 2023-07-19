@@ -1,0 +1,13 @@
+.chip {
+    display: inline-flex;
+    align-items: center;
+    background-color: #007ae4;
+    padding: 4px 12px;
+    border-radius: 16px;
+    margin-right: 8px;
+  }
+  
+  .label {
+    margin-right: 4px;
+    color: #fff;
+  }

@@ -1,9 +1,12 @@
 import Image from "next/image";
 import styles from "./AboutMe.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import { ABOUT_ME, ABOUT_ME_DESC_1, ABOUT_ME_DESC_2, ABOUT_ME_DESC_3, ABOUT_ME_DESC_4, ATTACK } from "../../utils/constants";
 
 const AboutMe = () => {
   const [gifPlaying, setGifPlaying] = useState(true);
+  const {testLanguage} = useContext(GlobalContext)
 
   const handleGifToggle = () => {
     setGifPlaying(!gifPlaying);
@@ -22,43 +25,35 @@ const AboutMe = () => {
 
   return (
     <div id="aboutMeId" className={styles.container}>
-      <h1 style={{marginBottom: '10px'}}>Sobre mí</h1>
+      <h1 style={{marginBottom: '10px'}}>{testLanguage(ABOUT_ME)}</h1>
       <div className={styles.card}>
         <p>
-          🖥️ Soy un desarrollador Fullstack con enfoque en el Frontend,
-          apasionado por la programación y el diseño. Me encanta crear
-          experiencias web interactivas y atractivas.
+          🖥️ {testLanguage(ABOUT_ME_DESC_1)}
         </p>
         <div className={styles.separatorContainer}>
           <hr className={styles.separatorLine} />
           <hr className={styles.separatorLine} />
         </div>
         <p>
-          💼 Tengo experiencia trabajando como programador Frontend en una
-          empresa de logística, donde formé parte del equipo de IT, y he mejorado mis
-          habilidades en tecnologías como React, Next.js, JavaScript y Node.js.
+          💼 {testLanguage(ABOUT_ME_DESC_2)}
         </p>
         <div className={styles.separatorContainer}>
           <hr className={styles.separatorLine} />
           <hr className={styles.separatorLine} />
         </div>
         <p>
-          🎨 Además de mi pasión por la programación, también disfruto del
-          diseño y el arte. Me gusta crear dibujos en pixel art y agregar
-          animaciones para dar vida a mis proyectos.
+          🎨 {testLanguage(ABOUT_ME_DESC_3)}
         </p>
         <div className={styles.separatorContainer}>
           <hr className={styles.separatorLine} />
           <hr className={styles.separatorLine} />
         </div>
         <p>
-          💡 Soy perfeccionista y siempre me esfuerzo por lograr los detalles
-          más finos en cada proyecto que emprendo, aunque entiendo que la
-          perfección absoluta es un objetivo difícil de alcanzar.
+          💡 {testLanguage(ABOUT_ME_DESC_4)}
         </p>
         <div style={{ display: "flex", alignItems:'center' }}>
           <button className={styles.attackButton} onClick={handleGifToggle}>
-            Ataque
+            {testLanguage(ATTACK)}
           </button>
           <Image src={checkGif()} width={120} height={120} alt="idle" />
         </div>

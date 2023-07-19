@@ -1,7 +1,11 @@
 import Typical from "react-typical";
 import styles from "./Profile.module.css";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useContext } from "react";
+import { GET_RESUME, HIRE_ME, HI_IM, PROFILE_DESC } from "../../utils/constants";
 
 const Profile = () => {
+  const { handleButtonClick, testLanguage } = useContext(GlobalContext);
   return (
     <div className={styles.homeContainer} id="homeId">
       <div className={styles.profileContainer}>
@@ -29,13 +33,18 @@ const Profile = () => {
                     <i class="fab fa-linkedin"></i>
                   </a>
                 </div>
+                <div className={styles.colzIcon}>
+                <a href="https://github.com/andrescimma1" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-github"></i>
+</a></div>
+                
               </div>
             </div>
 
             <div className={styles.profileDetailsName}>
               <span className={styles.primaryText}>
                 {" "}
-                Hola, soy <span style={{ color: "red" }}>Andres</span>
+                {testLanguage(HI_IM)} <span style={{ color: "red" }}>Andres</span>
               </span>
             </div>
 
@@ -56,7 +65,7 @@ const Profile = () => {
                   />
                 </h1>
                 <span className={styles.profileRoleTagline}>
-                  Una descripcion sobre mi bla bla bla bla bla bla.
+                  {testLanguage(PROFILE_DESC)}
                 </span>
               </span>
             </div>
@@ -64,15 +73,18 @@ const Profile = () => {
               <button
                 className="btn primary-btn"
                 style={{ margin: "0 0 0 28px" }}
+                onClick={() =>
+                  handleButtonClick(document.getElementById("contactMeId"))
+                }
               >
                 {""}
-                Hire Me{" "}
+                {testLanguage(HIRE_ME)}{" "}
               </button>
               <a
                 href="/assets/cv/CVAndresCimma.pdf"
                 download={"CVAndresCimma.pdf"}
               >
-                <button className="btn highlighted-btn">Get resume</button>
+                <button className="btn highlighted-btn">{testLanguage(GET_RESUME)}</button>
               </a>
             </div>
           </div>

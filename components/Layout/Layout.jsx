@@ -3,7 +3,9 @@ import styles from "./Layout.module.css";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AboutMe from "../AboutMe/AboutMe";
-import { ContactUs } from "../ContactUs/ContactUs";
+import ContactMe from "../ContactMe/ContactMe";
+import Resume from "../Resume/Resume";
+import Projects from "../Projects/Projects";
 
 const Layout = () => {
   return (
@@ -14,7 +16,9 @@ const Layout = () => {
         <Footer/>
       </div>
       <AboutMe/>
-      <ContactUs/>
+      <Resume/>
+      <Projects/>
+      <ContactMe/>
     </div>
 
   );

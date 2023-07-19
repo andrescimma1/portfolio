@@ -15,6 +15,12 @@
     justify-content: 'center';
 }
 
+.profileDetails{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .profileDetailsName{
     font-size: 24px;
     font-family: "Poppins SemiBold";
@@ -24,6 +30,8 @@
     display: flex;
     flex-direction: column;
     margin: 14px 0 24px;
+    justify-content: center;
+    align-items: center;
 }
 
 .profileDetailsRole h1{
@@ -67,8 +75,3 @@
     }
 }
 
-@media screen and (max-width: 1110px){
-    .profileDetails{
-        width: 90%;
-    }
-}
