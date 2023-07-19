@@ -99,7 +99,7 @@ const INDIVIDUAL_PROJECT = {
 }
 
 const IND_PROJECT_DESC = {
-    en: 'On the frontend, I used React and Redux, while on the backend NodeJS and Express. The database was implemented with PostgreSQL and Sequelize.',
+    en: 'I used React and Redux, while on the backend NodeJS and Express. The database was implemented with PostgreSQL and Sequelize.',
     es: 'En el frontend, utilicé React y Redux, mientras que en el backend NodeJS y Express. La base de datos la implementé con PostgreSQL y Sequelize.'
 }
 
