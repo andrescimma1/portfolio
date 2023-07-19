@@ -123,6 +123,16 @@ const MESSAGE = {
     es: 'Mensaje'
 }
 
+const SUCCESS_TOAST = {
+    en: 'Your form has been sent successfully.',
+    es: 'Tu formulario ha sido enviado con éxito.'
+}
+
+const ERROR_TOAST = {
+    en: 'An error occurred. Complete your details correctly and try again.',
+    es: 'Ocurrió un error. Completa bien tus datos y vuelve a intentar.'
+}
+
 export {
     HOME,
     ABOUT_ME,
@@ -148,5 +158,7 @@ export {
     TWO_WEEKS,
     MARVEL_DESC,
     NAME,
-    MESSAGE
+    MESSAGE,
+    SUCCESS_TOAST,
+    ERROR_TOAST
 }

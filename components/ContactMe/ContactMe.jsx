@@ -4,7 +4,7 @@ import styles from './ContactMe.module.css'
 import Image from 'next/image';
 import { toast } from 'react-hot-toast';
 import { GlobalContext } from '../../context/GlobalContext';
-import { CONTACT_ME, MESSAGE, NAME } from '../../utils/constants';
+import { CONTACT_ME, ERROR_TOAST, MESSAGE, NAME, SUCCESS_TOAST } from '../../utils/constants';
 
 const ContactMe = () => {
   const form = useRef();
@@ -23,9 +23,9 @@ const ContactMe = () => {
 
     emailjs.sendForm('service_9yxy738', 'template_5ju8ki6', form.current, '7GvJ-ZrUv_EAk8fxe')
       .then(() => {
-          toast.success('Tu formulario ha sido enviado con éxito.');
+          toast.success(testLanguage(SUCCESS_TOAST));
       }, () => {
-          toast.error('Ocurrió un error. Completa bien tus datos y vuelve a intentar.');
+          toast.error(testLanguage(ERROR_TOAST));
       });
   };
 

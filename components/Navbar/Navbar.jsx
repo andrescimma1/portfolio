@@ -65,7 +65,7 @@ const Navbar = () => {
             alignItems: "center",
           }}
         >
-          <h1>Andres Cimma</h1>
+          <h2>Andres Cimma</h2>
           <div
             className={styles.navButton}
             onClick={() => handleButtonClick(document.getElementById("homeId"))}
