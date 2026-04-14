@@ -1,0 +1,214 @@
+.hero {
+  padding: calc(5.5rem + env(safe-area-inset-top, 0)) var(--space-gutter)
+    calc(4rem + env(safe-area-inset-bottom, 0));
+  min-height: min(92vh, 900px);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(120, 120, 120, 0.08),
+      transparent 55%
+    ),
+    var(--bg);
+}
+
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+  }
+}
+
+.kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin: 0 0 1rem;
+}
+
+.name {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35em;
+}
+
+.headline {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--fg-muted);
+  max-width: 34ch;
+  margin: 0 0 1rem;
+}
+
+.sub {
+  font-size: 1.0625rem;
+  color: var(--fg-muted);
+  max-width: 52ch;
+  line-height: 1.65;
+  margin: 0 0 1.75rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.btnPrimary,
+.btnGhost {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
+    background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.btnPrimary {
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+
+.btnGhost:hover {
+  border-color: var(--fg);
+  transform: translateY(-1px);
+}
+
+.btnLink {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 0.25rem;
+  margin-left: 0.25rem;
+  color: var(--fg-muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.btnLink:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.social {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  transition: transform 0.3s var(--ease), border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  background: var(--bg-elevated);
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      var(--border) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.panelInner {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mono {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.panelTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  max-width: 16ch;
+}
+
+.panelText {
+  margin: 0;
+  color: var(--fg-muted);
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+.ornament {
+  margin-top: auto;
+  height: 2px;
+  width: 4rem;
+  background: linear-gradient(90deg, var(--fg), transparent);
+  border-radius: 999px;
+}

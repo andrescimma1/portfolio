@@ -1,0 +1,9 @@
+.section {
+  padding: var(--space-section) var(--space-gutter);
+  border-top: 1px solid var(--border);
+}
+
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}

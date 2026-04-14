@@ -1,30 +1,16 @@
-.footerContainer{
-    height: 17.8%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem var(--space-gutter) calc(2rem + env(safe-area-inset-bottom, 0));
+  background: var(--bg);
 }
 
-.footerParent{
-    width: 100%;
-    height: 100%;
-    max-width: 1920px;
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
 }
 
-.footerImage{
-    max-width: 100%;
-    height: 130px;
-}
-
-@media only screen and (max-width: 1110px){
-    .footerParent{
-        display: flex;
-        align-items: flex-end;
-    }
-    .footerImage{
-        width: 200vw;
-        height: 100%;
-        object-fit: cover;
-    }
+.copy {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--fg-subtle);
 }

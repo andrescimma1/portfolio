@@ -1,73 +1,186 @@
-.navButton {
-  cursor: pointer;
-}
-
-.navButton:hover {
-  color: rgb(189, 0, 0);
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-  padding: 0.8rem 5rem;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  color: white;
-  transition: background-color 0.5s ease;
-  z-index: 9999;
-}
-
-.menu {
+.bar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  right: 0;
+  z-index: 1000;
+  padding: 0.85rem var(--space-gutter);
+  transition: background 0.35s var(--ease), border-color 0.35s ease,
+    box-shadow 0.35s var(--ease), backdrop-filter 0.35s ease;
+  border-bottom: 1px solid transparent;
+  background: transparent;
 }
 
-.open {
-  transform: translateX(0);
+.barScrolled {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
-.menuList {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@supports not (backdrop-filter: blur(12px)) {
+  .barScrolled {
+    background: var(--bg);
+  }
 }
 
-.menuList li {
-  text-align: center;
-  margin-bottom: 1em;
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.menuList li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5em;
+.brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.35rem 0;
+  color: var(--fg);
+  transition: opacity 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 0.75;
+}
+
+.desktop {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 900px) {
+  .desktop {
+    display: flex;
+  }
+}
+
+.link {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.45rem 0.65rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.link:hover {
+  color: var(--fg);
+  background: rgba(120, 120, 120, 0.08);
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.25s var(--ease);
+}
+
+.lang:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 
 .burger {
-  color: #fff;
-  font-size: 2em;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   cursor: pointer;
+  padding: 0 0.65rem;
 }
 
-.burger:hover {
-  color: #ccc;
+@media (min-width: 900px) {
+  .burger {
+    display: none;
+  }
 }
 
-.closeIcon {
-  color: #fff;
-  font-size: 2em;
+.burgerLine {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--fg);
+  border-radius: 2px;
+}
+
+.mobile {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+
+.mobileOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 900px) {
+  .mobile {
+    display: none;
+  }
+}
+
+.mobileInner {
+  padding: 5.5rem var(--space-gutter) 2rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  border: none;
+  background: none;
   cursor: pointer;
-  margin: 1rem 0 0 1rem;
+  padding: 0.5rem 0;
+  color: var(--fg);
+  text-align: left;
+  width: 100%;
+  max-width: 20rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobileLink:last-child {
+  margin-top: 0.5rem;
+  border-bottom: none;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--fg-muted);
 }

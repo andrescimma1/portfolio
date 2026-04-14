@@ -1,0 +1,30 @@
+.header {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  color: var(--fg-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.body {
+  display: grid;
+  gap: 1rem;
+  max-width: 52rem;
+}
+
+.p {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}

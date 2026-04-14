@@ -1,194 +1,140 @@
-import styles from "./Navbar.module.css";
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../context/GlobalContext";
 import Image from "next/image";
-import { ABOUT_ME, CONTACT_ME, EXPERIENCE, HOME, PROJECTS } from "../../utils/constants";
+import { GlobalContext } from "../../context/GlobalContext";
+import { nav, siteMeta } from "../../data/siteContent";
+import styles from "./Navbar.module.css";
 
-const Navbar = () => {
-  const { handleButtonClick, toggleLanguage, language, testLanguage } = useContext(GlobalContext);
-  const [navColor, setNavColor] = useState("transparent");
+const SECTION_IDS = ["hero", "about", "experience", "work", "skills", "contact"];
 
-  const [isMobileView, setIsMobileView] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 980);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const navbarHeight = 93.59;
-      const threshold = 10;
-
-      // Calcula la posición del scroll y cambia el color del Navbar según sea necesario
-      if (scrollPosition > navbarHeight) {
-        setNavColor(
-          `rgba(22, 0, 42, ${Math.min(
-            (scrollPosition - navbarHeight) / threshold,
-            1
-          )})`
-        ); // Cambio gradual del color
-      } else {
-        setNavColor("transparent"); // Color transparente cuando el scroll está en la parte superior del Navbar
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  return (
-    <div>
-      <div className={styles.navbar} style={{ backgroundColor: navColor }}>
-        {!isMobileView ? <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "900px",
-            alignItems: "center",
-          }}
-        >
-          <h2>Andres Cimma</h2>
-          <div
-            className={styles.navButton}
-            onClick={() => handleButtonClick(document.getElementById("homeId"))}
-          >
-            {testLanguage(HOME)}
-          </div>
-          <div
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("aboutMeId"))
-            }
-          >
-            {testLanguage(ABOUT_ME)}
-          </div>
-          <div
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("resumeId"))
-            }
-          >
-            {testLanguage(EXPERIENCE)}
-          </div>
-          <div
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("projectsId"))
-            }
-          >
-            {testLanguage(PROJECTS)}
-          </div>
-          <div
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("contactMeId"))
-            }
-          >
-            {testLanguage(CONTACT_ME)}
-          </div>
-          <div
-            className={styles.navButton}
-            onClick={() =>
-              toggleLanguage()
-            }
-          >
-            {language === "es" ? <Image src={'/assets/images/eeuu.svg'} width={30} height={30} alt="eeuu"/> : 
-            <Image src={'/assets/images/spain.svg'} width={30} height={30} alt="spain"/>}
-          </div>
-        </div>
-        :
-        <div>
-          <div>
-            <input
-              type="checkbox"
-              id="toggle"
-              checked={isOpen}
-              onChange={handleToggle}
-              style={{ display: "none" }}
-            />
-            <label htmlFor="toggle" className={styles.burger}>
-              &#9776;
-            </label>
-          </div>
-          <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
-            <input
-              type="checkbox"
-              id="toggle"
-              checked={isOpen}
-              onChange={handleToggle}
-              style={{display:'none'}}
-            />
-            <label htmlFor="toggle" className={styles.closeIcon}>&#10005;</label>
-            <ul className={styles["menuList"]}>
-            <li
-            className={styles.navButton}
-            onClick={() => handleButtonClick(document.getElementById("homeId"))}
-          >
-            {testLanguage(HOME)}
-          </li>
-          <li
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("aboutMeId"))
-            }
-          >
-            {testLanguage(ABOUT_ME)}
-          </li>
-          <li
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("resumeId"))
-            }
-          >
-            {testLanguage(EXPERIENCE)}
-          </li>
-          <li
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("projectsId"))
-            }
-          >
-            {testLanguage(PROJECTS)}
-          </li>
-          <li
-            className={styles.navButton}
-            onClick={() =>
-              handleButtonClick(document.getElementById("contactMeId"))
-            }
-          >
-            {testLanguage(CONTACT_ME)}
-          </li>
-          <li
-            className={styles.navButton}
-            onClick={() => toggleLanguage()}
-          >
-            {language === "es" ? <Image src={'/assets/images/eeuu.svg'} width={30} height={30} alt="eeuu"/> : 
-            <Image src={'/assets/images/spain.svg'} width={30} height={30} alt="spain"/>}
-          </li>
-            </ul>
-          </div>
-        </div>}
-      </div>
-    </div>
-  );
+const NAV_LABEL = {
+  hero: nav.home,
+  about: nav.about,
+  experience: nav.experience,
+  work: nav.work,
+  skills: nav.skills,
+  contact: nav.contact,
 };
 
-export default Navbar;
+export default function Navbar() {
+  const { handleButtonClick, toggleLanguage, language, testLanguage } =
+    useContext(GlobalContext);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
+  const go = (id) => {
+    const el = document.getElementById(id);
+    handleButtonClick(el);
+    setMobileOpen(false);
+  };
+
+  return (
+    <header
+      className={`${styles.bar} ${scrolled ? styles.barScrolled : ""}`}
+      role="banner"
+    >
+      <div className={styles.inner}>
+        <button
+          type="button"
+          className={styles.brand}
+          onClick={() => go("hero")}
+        >
+          {siteMeta.name}
+        </button>
+
+        <nav className={styles.desktop} aria-label="Primary">
+          {SECTION_IDS.map((id) => (
+            <button
+              key={id}
+              type="button"
+              className={styles.link}
+              onClick={() => go(id)}
+            >
+              {testLanguage(NAV_LABEL[id])}
+            </button>
+          ))}
+          <button
+            type="button"
+            className={styles.lang}
+            onClick={toggleLanguage}
+            aria-label={language === "es" ? "Switch to English" : "Cambiar a español"}
+          >
+            {language === "es" ? (
+              <Image src="/assets/images/eeuu.svg" width={22} height={22} alt="" />
+            ) : (
+              <Image src="/assets/images/spain.svg" width={22} height={22} alt="" />
+            )}
+          </button>
+        </nav>
+
+        <button
+          type="button"
+          className={styles.burger}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMobileOpen((o) => !o)}
+        >
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        className={`${styles.mobile} ${mobileOpen ? styles.mobileOpen : ""}`}
+        aria-hidden={!mobileOpen}
+        role="presentation"
+        onClick={() => setMobileOpen(false)}
+      >
+        <div
+          className={styles.mobileInner}
+          role="presentation"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {SECTION_IDS.map((id) => (
+            <button
+              key={id}
+              type="button"
+              className={styles.mobileLink}
+              onClick={() => go(id)}
+            >
+              {testLanguage(NAV_LABEL[id])}
+            </button>
+          ))}
+          <button
+            type="button"
+            className={styles.mobileLink}
+            onClick={() => {
+              toggleLanguage();
+              setMobileOpen(false);
+            }}
+          >
+            {language === "es" ? "English" : "Español"}
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}

@@ -1,27 +1,28 @@
 import Navbar from "../Navbar/Navbar";
-import styles from "./Layout.module.css";
 import Footer from "../Footer/Footer";
-import Profile from "../Profile/Profile";
-import AboutMe from "../AboutMe/AboutMe";
-import ContactMe from "../ContactMe/ContactMe";
-import Resume from "../Resume/Resume";
-import Projects from "../Projects/Projects";
+import Hero from "../Hero/Hero";
+import About from "../About/About";
+import Experience from "../Experience/Experience";
+import SelectedWork from "../SelectedWork/SelectedWork";
+import Skills from "../Skills/Skills";
+import Contact from "../Contact/Contact";
 
-const Layout = () => {
+export default function Layout() {
   return (
-    <div>
+    <>
+      <a href="#main" className="skipLink">
+        Skip to content
+      </a>
       <Navbar />
-      <div className={styles.homeContainer}>
-        <Profile/>
-        <Footer/>
-      </div>
-      <AboutMe/>
-      <Resume/>
-      <Projects/>
-      <ContactMe/>
-    </div>
-
+      <main id="main">
+        <Hero />
+        <About />
+        <Experience />
+        <SelectedWork />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
-};
-
-export default Layout;
+}
