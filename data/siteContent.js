@@ -206,6 +206,21 @@ export const selectedWork = {
       url: "https://metals-api.com/",
       image: "/work/metals-api-dashboard.png",
     },
+    {
+      id: "assurant-seguro-movil",
+      name: { en: "Assurant · Seguro Móvil", es: "Assurant · Seguro Móvil" },
+      description: {
+        en: "Customer self-service portal for mobile insurance claims at seguromovil.com.ar. I built the experience in React and MUI, covering the main entry flow, action CTAs, and support navigation with a clear structure for claim reporting and case follow-up.",
+        es: "Portal de autogestión para siniestros de seguro móvil en seguromovil.com.ar. Lo desarrollé con React y MUI, cubriendo el flujo principal de entrada, CTAs de acción y navegación de soporte con una estructura clara para reportes y seguimiento de casos.",
+      },
+      role: {
+        en: "Frontend implementation — React, MUI",
+        es: "Implementación frontend — React, MUI",
+      },
+      stack: ["React", "MUI", "JavaScript"],
+      url: "https://www.seguromovil.com.ar/",
+      image: "/work/assurant-seguromovil.png",
+    },
   ],
 };
 
