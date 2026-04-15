@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Image from "next/image";
 import { GlobalContext } from "../../context/GlobalContext";
 import { nav, siteMeta } from "../../data/siteContent";
 import styles from "./Navbar.module.css";
@@ -75,18 +74,34 @@ export default function Navbar() {
               {testLanguage(NAV_LABEL[id])}
             </button>
           ))}
-          <button
-            type="button"
-            className={styles.lang}
-            onClick={toggleLanguage}
-            aria-label={language === "es" ? "Switch to English" : "Cambiar a español"}
+          <div
+            className={styles.langGroup}
+            role="group"
+            aria-label={
+              language === "es" ? "Idioma del sitio" : "Site language"
+            }
           >
-            {language === "es" ? (
-              <Image src="/assets/images/eeuu.svg" width={22} height={22} alt="" />
-            ) : (
-              <Image src="/assets/images/spain.svg" width={22} height={22} alt="" />
-            )}
-          </button>
+            <button
+              type="button"
+              className={`${styles.langOpt} ${
+                language === "en" ? styles.langActive : ""
+              }`}
+              onClick={() => language !== "en" && toggleLanguage()}
+              aria-pressed={language === "en"}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={`${styles.langOpt} ${
+                language === "es" ? styles.langActive : ""
+              }`}
+              onClick={() => language !== "es" && toggleLanguage()}
+              aria-pressed={language === "es"}
+            >
+              ES
+            </button>
+          </div>
         </nav>
 
         <button
@@ -123,16 +138,42 @@ export default function Navbar() {
               {testLanguage(NAV_LABEL[id])}
             </button>
           ))}
-          <button
-            type="button"
-            className={styles.mobileLink}
-            onClick={() => {
-              toggleLanguage();
-              setMobileOpen(false);
-            }}
-          >
-            {language === "es" ? "English" : "Español"}
-          </button>
+          <div className={styles.mobileLang}>
+            <div
+              className={styles.langGroup}
+              role="group"
+              aria-label={
+                language === "es" ? "Idioma del sitio" : "Site language"
+              }
+            >
+              <button
+                type="button"
+                className={`${styles.langOpt} ${styles.langOptMobile} ${
+                  language === "en" ? styles.langActive : ""
+                }`}
+                onClick={() => {
+                  if (language !== "en") toggleLanguage();
+                  setMobileOpen(false);
+                }}
+                aria-pressed={language === "en"}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                className={`${styles.langOpt} ${styles.langOptMobile} ${
+                  language === "es" ? styles.langActive : ""
+                }`}
+                onClick={() => {
+                  if (language !== "es") toggleLanguage();
+                  setMobileOpen(false);
+                }}
+                aria-pressed={language === "es"}
+              >
+                ES
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
